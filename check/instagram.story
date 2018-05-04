@@ -1,5 +1,5 @@
-user = instagram action:get_user user:brand_name
+user = instagram get_user user:brand_name
 
 if user is None
-  return Yes
-return No
+  return yes
+return no
