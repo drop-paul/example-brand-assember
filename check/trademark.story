@@ -1,3 +1,3 @@
-trademark = markify search mark:brand_name
+trademark = markify api method:get endpoint:'/search?mark={{brand_name}}'
 
 return trademark.available

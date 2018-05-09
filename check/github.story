@@ -1,5 +1,5 @@
-org = github get_org org:brand_name
+res = github api method:get endpoint:'/orgs/{{brand_name}}'
 
-if org is None
+if res.status == 400
   return yes
 return no

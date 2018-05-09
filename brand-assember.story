@@ -1,4 +1,4 @@
-http method:get path:'/assemble' as requset, response
+http-endpoint method:get path:'/assemble' as requset, response
   result = {}
   if requset.body is None or requset.body.brand_name is None
     response code code:400
@@ -7,14 +7,14 @@ http method:get path:'/assemble' as requset, response
       'message': 'Must provide a brand_name'
     }
   else
-    result.domain = next './check/domain' brand_name:requset.body.brand_name
-    result.twitter = next './check/twitter' brand_name:request.body.brand_name
-    result.instagram = next './check/instagram' brand_name:request.body.brand_name
-    result.github = next './check/github' brand_name:requset.body.brand_name
-    result.trademark = next './check/trademark' brand_name:request.body.brand_name
+    result.domain = next `./check/domain` brand_name:requset.body.brand_name
+    result.twitter = next `./check/twitter` brand_name:request.body.brand_name
+    result.instagram = next `./check/instagram` brand_name:request.body.brand_name
+    result.github = next `./check/github` brand_name:requset.body.brand_name
+    result.trademark = next `./check/trademark` brand_name:request.body.brand_name
     res write data:result
 
-http method:post path:'/create/domain' as requset, response
+http-endpoint method:post path:'/create/domain' as requset, response
   if requset.body is None
     response code code:400
     response write data:{
@@ -28,5 +28,5 @@ http method:post path:'/create/domain' as requset, response
                                 AuxBillingEmailAddress, Extended attributes'
     }
   else
-    data = next './create/domain' args:req.body
+    data = next `./create/domain` args:req.body
     response write data:data

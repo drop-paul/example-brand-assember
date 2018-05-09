@@ -1,5 +1,5 @@
-user = twitter lookup_user user:brand_name
+res = twitter api method:get endpoint:'users/search?q={{brand_name}}'
 
-if user is None
+if res.status == 400
   return yes
 return no

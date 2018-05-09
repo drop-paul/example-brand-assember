@@ -1,5 +1,5 @@
-user = instagram get_user user:brand_name
+res = instagram api method:get endpoint:'/users/search?q={{brand_name}}'
 
-if user is None
+if res.status == 400
   return yes
 return no
